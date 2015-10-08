@@ -13,7 +13,7 @@
         <map:CodeMap Kind="New">
           <map:CodeMap.Action>
             <map:ReplaceWithTemplate>
-              await Windows.ApplicationModel.Appointments.AppointmentManager.RequestStoreAsync()
+              await Windows.ApplicationModel.Appointments.AppointmentManager.RequestStoreAsync(Windows.ApplicationModel.Appointments.AppointmentStoreAccessType.AllCalendarsReadOnly)
             </map:ReplaceWithTemplate>
           </map:CodeMap.Action>
         </map:CodeMap>

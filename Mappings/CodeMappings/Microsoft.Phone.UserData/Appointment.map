@@ -9,6 +9,49 @@
                                    NewClassName="Appointment" />
           </map:CodeMap.Action>
         </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="IsAllDayEvent">
+          <map:CodeMap.Action>
+            <map:ReplaceWithProperty NewProperty="AllDay" />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="Attendees">
+          <map:CodeMap.Action>
+            <map:ReplaceWithProperty NewProperty="Invitees" />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="Status">
+          <map:CodeMap.Action>
+            <map:ReplaceWithProperty NewProperty="BusyStatus" />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="Subject">
+          <map:CodeMap.Action>
+            <map:Keep />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="Location">
+          <map:CodeMap.Action>
+            <map:Keep />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="StartTime">
+          <map:CodeMap.Action>
+            <map:Keep />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="Organizer">
+          <map:CodeMap.Action>
+            <map:ReplaceWithProperty NewProperty="IsOrganizedByUser" />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+        
       </map:CodeMapPackage.Maps>
     </map:CodeMapPackage>
   </MapUnit.Elements>
