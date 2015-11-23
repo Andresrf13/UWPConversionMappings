@@ -1,0 +1,32 @@
+<MapUnit xmlns="clr-namespace:Mobilize.Mappers.Extensibility.Core;assembly=Mobilize.ExtensibleMappers"
+         xmlns:map="clr-namespace:Mobilize.Mappers.Extensibility.Code;assembly=Mobilize.ExtensibleMappers">
+  <MapUnit.Elements>
+    <map:CodeMapPackage Type="Microsoft.Phone.Scheduler.ScheduledTaskAgent">
+      <map:CodeMapPackage.Maps>
+
+        <map:CodeMap Kind="Type">
+          <map:CodeMap.Action>
+            <map:ActionSequence>              
+              <map:ReplaceClassUsage NewNamespace="Windows.UI.Xaml.Media.Imaging" NewClassName="XamlRenderingBackgroundTask" />
+            </map:ActionSequence>              
+          </map:CodeMap.Action>
+        </map:CodeMap>
+        
+        <map:CodeMap Kind="ClassInheritance">
+          <map:CodeMap.Action>
+            <map:ApplyToMethodDeclaration MethodName="OnInvoke">
+              <map:ActionSequence>
+                <map:Rename NewName="OnRun" />
+                <map:SetModifier Modifier="Override" />
+                <map:SetModifier Modifier="Protected" />
+                <map:ReplaceParameterDeclarationType Position="0">
+                  Windows.ApplicationModel.Background.IBackgroundTaskInstance
+                </map:ReplaceParameterDeclarationType>
+              </map:ActionSequence>
+            </map:ApplyToMethodDeclaration>            
+          </map:CodeMap.Action>
+        </map:CodeMap>
+      </map:CodeMapPackage.Maps>
+    </map:CodeMapPackage>
+  </MapUnit.Elements>
+</MapUnit>

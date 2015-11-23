@@ -10,7 +10,7 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 {    
     public sealed class Alarm
     {
-        public string _name { get; set; } // this property set a tag property on ScheduledToastNotification. It's usefull for reference like name inside a group of Notifications .
+        
         private string _title;
         public string Title
         {
@@ -35,7 +35,8 @@ namespace WindowsPhoneUWP.UpgradeHelpers
             }
         }
         public DateTime BeginTime { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; }// this property set a tag property on ScheduledToastNotification. It's usefull for reference like name inside a group of Notifications .
+
         private Uri _sound;
         public Uri Sound {
             get { return _sound; }
@@ -66,13 +67,15 @@ namespace WindowsPhoneUWP.UpgradeHelpers
                               + "</visual>"
                               + "</toast>";
             toastDOM = new Windows.Data.Xml.Dom.XmlDocument();
-            toastDOM.LoadXml(toastXmlString);           
+            toastDOM.LoadXml(toastXmlString);
+            Title = Name;
+            this.Name = Name;
         }
 
         public Windows.UI.Notifications.ScheduledToastNotification GetAlarm()
         {
             Windows.UI.Notifications.ScheduledToastNotification toast = new Windows.UI.Notifications.ScheduledToastNotification(toastDOM, BeginTime);
-            toast.Tag = _name;
+            toast.Tag = Name;            
             return toast;
         }
 

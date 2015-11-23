@@ -51,7 +51,7 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 
         }
 
-        // HAY QUE VERIFICAR SI ESTE SE PUEDE MAPEAR        public bool IsPromptMode { get; set; }
+     
 
         public string _title;
         public new string Title

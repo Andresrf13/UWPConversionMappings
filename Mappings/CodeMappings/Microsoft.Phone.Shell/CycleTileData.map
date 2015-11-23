@@ -1,14 +1,13 @@
 <MapUnit xmlns="clr-namespace:Mobilize.Mappers.Extensibility.Core;assembly=Mobilize.ExtensibleMappers"
          xmlns:map="clr-namespace:Mobilize.Mappers.Extensibility.Code;assembly=Mobilize.ExtensibleMappers">
   <MapUnit.Elements>
-    <map:CodeMapPackage Type="Microsoft.Phone.Shell.StandardTileData" Name="Microsoft.Phone.Shell.StandardTileData">
+    <map:CodeMapPackage Type="Microsoft.Phone.Shell.CycleTileData">
       <map:CodeMapPackage.Maps>
 
         <map:CodeMap Kind="Type">
           <map:CodeMap.Action>
             <map:ActionSequence>
-              <map:AddHelper Path="..\Helpers\StandardTileData.cs" />
-              <map:ReplaceClassUsage NewNamespace="WindowsPhoneUWP.UpgradeHelpers" NewClassName="StandardTileData" />              
+              <map:MarkAsNotMapped />
             </map:ActionSequence>              
           </map:CodeMap.Action>
         </map:CodeMap>
@@ -23,7 +22,7 @@
                   </map:WithConstructorCall>
                 </map:Case.Condition>
                 <map:Case.Action>
-                  <map:Keep />
+                  <map:MarkAsNotMapped />
                 </map:Case.Action>
               </map:Case>            
               <map:Default>
@@ -37,46 +36,35 @@
         
         <map:CodeMap Kind="MemberAccess" MemberName="Title">
           <map:CodeMap.Action>
-            <map:Keep />
+            <map:MarkAsNotMapped />
           </map:CodeMap.Action>
         </map:CodeMap>
 
         <map:CodeMap Kind="MemberAccess" MemberName="BackgroundColor">
           <map:CodeMap.Action>
-            <map:Keep />
+            <map:MarkAsNotMapped />
           </map:CodeMap.Action>
         </map:CodeMap>
 
         <map:CodeMap Kind="MemberAccess" MemberName="Count">
           <map:CodeMap.Action>
-            <map:Keep />
+            <map:MarkAsNotMapped />
           </map:CodeMap.Action>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="BackBackgroundImage">
+        <map:CodeMap Kind="MemberAccess" MemberName="SmallBackgroundImage">
           <map:CodeMap.Action>
-            <map:Keep />
+            <map:MarkAsNotMapped />
           </map:CodeMap.Action>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="SmallIconImage">
+        <map:CodeMap Kind="MemberAccess" MemberName="CycleImages">
           <map:CodeMap.Action>
-            <map:Keep />
+            <map:MarkAsNotMapped />
           </map:CodeMap.Action>
-        </map:CodeMap>        
-        
-        <map:CodeMap Kind="MemberAccess" MemberName="BackContent">
-          <map:CodeMap.Action>
-            <map:Keep />
-          </map:CodeMap.Action>
-        </map:CodeMap>
-        <map:CodeMap Kind="MemberAccess" MemberName="BackgroundImage">
-          <map:CodeMap.Action>
-            <map:Keep />
-          </map:CodeMap.Action>
-        </map:CodeMap>             
+        </map:CodeMap>                       
                 
-      </map:CodeMapPackage.Maps>     
+      </map:CodeMapPackage.Maps>      
     </map:CodeMapPackage>
   </MapUnit.Elements>
 </MapUnit>

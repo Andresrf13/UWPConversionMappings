@@ -4,11 +4,11 @@
     <map:CodeMapPackage Type=" Microsoft.Phone.Scheduler.ScheduledActionService">
       <map:CodeMapPackage.Maps>
 
-        <map:CodeMap Kind="Type">
+        <!--<map:CodeMap Kind="Type">
           <map:CodeMap.Action>                          
               <map:ReplaceClassUsage NewNamespace="Windows.UI.Notifications" NewClassName="ToastNotificationManager" />            
           </map:CodeMap.Action>
-        </map:CodeMap>
+        </map:CodeMap>-->
 
         <!--Properties-->
         

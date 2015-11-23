@@ -1,0 +1,107 @@
+<MapUnit xmlns="clr-namespace:Mobilize.Mappers.Extensibility.Core;assembly=Mobilize.ExtensibleMappers"
+         xmlns:map="clr-namespace:Mobilize.Mappers.Extensibility.Code;assembly=Mobilize.ExtensibleMappers">
+  <MapUnit.Elements>
+    <map:CodeMapPackage Type="Microsoft.Phone.Scheduler.ScheduledActionService">
+      <map:CodeMapPackage.Maps>
+
+        <map:CodeMap Kind="Type">
+          <map:CodeMap.Action>
+            <map:ActionSequence>              
+              <map:ReplaceClassUsage NewNamespace="Windows.ApplicationModel.Background" NewClassName="BackgroundTaskBuilder" />
+            </map:ActionSequence>              
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <!--<map:CodeMap Kind="New" >
+          <map:CodeMap.Action>
+            <map:CommentOut />
+          </map:CodeMap.Action>
+        </map:CodeMap>-->
+        
+        
+        <map:CodeMap Kind="Call" MemberName="Add">
+          <map:CodeMap.Action>
+            <map:Conditional>
+              <map:Case>
+                <map:Case.Condition>
+                  <map:WithMethodCall>                    
+                    <map:ArgumentCount>1</map:ArgumentCount>
+                    <map:WithArgument Position="0">
+                      <map:IsExpressionOfType Type="Microsoft.Phone.Scheduler.Alarm" />
+                      <map:AssignName>$arg0</map:AssignName>
+                    </map:WithArgument>
+                  </map:WithMethodCall>
+                </map:Case.Condition>
+                <map:Case.Action>
+                  <map:ReplaceWithTemplate>
+                    <![CDATA[ Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier().AddToSchedule($arg0))]]>
+                  </map:ReplaceWithTemplate>
+                </map:Case.Action>
+              </map:Case>
+              <map:Case>
+                <map:Case.Condition>
+                  <map:WithMethodCall>
+                    <map:ArgumentCount>1</map:ArgumentCount>
+                    <map:WithArgument Position="0">
+                      <map:IsExpressionOfType Type="Microsoft.Phone.Scheduler.PeriodicTask" />
+                      <map:AssignName>$ScheduledAction</map:AssignName>
+                    </map:WithArgument>
+                  </map:WithMethodCall>
+                </map:Case.Condition>
+                <map:Case.Action>
+                  <map:ActionSequence>
+                    <map:ReplaceWithTemplate>
+                      <![CDATA[$ScheduledAction.Register()]]>
+                    </map:ReplaceWithTemplate>
+                  </map:ActionSequence>                 
+                </map:Case.Action>
+              </map:Case>              
+              <map:Default>
+                <map:MarkAsNotMapped />       
+              </map:Default>
+            </map:Conditional>
+          </map:CodeMap.Action>       
+        </map:CodeMap>
+
+        <map:CodeMap Kind="Call" MemberName="Remove">       
+         <map:Conditional>
+            <map:Case>
+              <map:Case.Condition>
+                <map:WithMethodCall>                  
+                  <map:WithArgument Position="0">
+                    <map:AssignName>$arg0</map:AssignName>
+                  </map:WithArgument>
+                </map:WithMethodCall>
+              </map:Case.Condition>
+              <map:Case.Action>
+                <map:ActionSequence>
+                  <map:AddHelper Path="..\Helpers\ScheduledActionService.cs" />
+                  <map:ReplaceWithTemplate>
+                    <![CDATA[WindowsPhoneUWP.UpgradeHelpers.ScheduledActionService.Remove($arg0)]]>
+                  </map:ReplaceWithTemplate>
+                </map:ActionSequence>
+              </map:Case.Action>
+            </map:Case>      
+            <map:Default>
+              <map:MarkAsNotMapped />
+            </map:Default>
+          </map:Conditional>
+        </map:CodeMap>
+
+
+        <map:CodeMap Kind="Call" MemberName="LaunchForTest">
+          <map:CodeMap.Action>
+            <map:MarkAsNotMapped  />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="Call" MemberName="Find">
+          <map:CodeMap.Action>
+            <map:MarkAsNotMapped  />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+      </map:CodeMapPackage.Maps>
+    </map:CodeMapPackage>
+  </MapUnit.Elements>
+</MapUnit>

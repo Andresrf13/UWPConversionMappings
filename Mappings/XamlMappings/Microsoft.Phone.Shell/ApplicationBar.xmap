@@ -14,16 +14,15 @@
                         <xmap:RenameProperty NewPropertyLocalName="BottomAppBar" />
                     </xmap:XamlMap.Action>
                 </xmap:XamlMap>
+                
                 <xmap:XamlMap Kind="Property" PropertyName="Mode" >
                     <xmap:XamlMap.Action>
+                      <xmap:ActionSequence>
                         <xmap:ReplaceAttributeValue>
-                            <xmap:RegexReplacementPair ReplacementString="True" ValueRegex="Default" />
+                          <xmap:RegexReplacementPair ReplacementString="False" ValueRegex="^.+$" />
                         </xmap:ReplaceAttributeValue>
-                    </xmap:XamlMap.Action>
-                </xmap:XamlMap>
-                <xmap:XamlMap Kind="Property" PropertyName="Mode" >
-                    <xmap:XamlMap.Action>
                         <xmap:RenameProperty NewPropertyLocalName="IsOpen" />
+                      </xmap:ActionSequence>                        
                     </xmap:XamlMap.Action>
                 </xmap:XamlMap>
                 <xmap:XamlMap Kind="Property" PropertyName="BackgroundColor" >

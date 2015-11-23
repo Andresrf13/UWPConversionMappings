@@ -9,6 +9,25 @@
 					<map:Keep />
 				</map:CodeMap>
 
+        <map:CodeMap Kind="Call" MemberName="RequestProductPurchaseAsync">
+          
+          <map:Conditional>
+            <map:Case>
+              <map:Case.Condition>
+                <map:WithMethodCall>
+                  <map:ArgumentCount>2</map:ArgumentCount>
+                </map:WithMethodCall>
+              </map:Case.Condition>
+              <map:Case.Action>
+                <map:RemoveParameter Position="1" />
+              </map:Case.Action>
+            </map:Case>
+            <map:Default>
+              <map:Keep />
+            </map:Default>
+          </map:Conditional>          
+        </map:CodeMap>
+        
         <map:CodeMap Kind="Call" MemberName="GetAppReceiptAsync">
           <map:Keep />
         </map:CodeMap>

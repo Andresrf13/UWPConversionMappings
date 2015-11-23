@@ -15,6 +15,10 @@
           <map:ReplaceWithProperty NewProperty="Container" />
         </map:CodeMap>
 
+        <map:CodeMap Kind="MemberAccess" MemberName="ManipulationOrigin">
+          <map:ReplaceWithProperty NewProperty="Position" />
+        </map:CodeMap>
+
         <map:CodeMap Kind="MemberAccess" MemberName="FinalVelocities">
           <map:ReplaceWithProperty NewProperty="Velocities" />
         </map:CodeMap>

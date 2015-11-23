@@ -46,12 +46,54 @@
           </map:CodeMap.Action>
         </map:CodeMap>
 
+        <map:CodeMap Kind="MemberAccess" MemberName="Details">
+          <map:CodeMap.Action>
+            <map:Keep />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
         <map:CodeMap Kind="MemberAccess" MemberName="Organizer">
           <map:CodeMap.Action>
             <map:ReplaceWithProperty NewProperty="IsOrganizedByUser" />
           </map:CodeMap.Action>
         </map:CodeMap>
-        
+
+        <map:CodeMap Kind="MemberAccess" MemberName="IsPrivate">
+          <map:CodeMap.Action>
+            <map:ReplaceWithProperty NewProperty="Sensitivity" />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="MemberAccess" MemberName="EndTime">
+          <map:CodeMap.Action>
+            <map:Conditional>
+              <map:Case>
+                <map:Case.Condition>
+                  <map:WithLeftSideOfDottedAccess>
+                    <map:AssignName>$Owner</map:AssignName>
+                  </map:WithLeftSideOfDottedAccess>
+                </map:Case.Condition>
+                <map:Case.Action>
+                  <map:ReplaceWithTemplate>
+                    <![CDATA[$Owner.StartTime.Date.Add($Owner.Duration)]]>
+                  </map:ReplaceWithTemplate>
+                </map:Case.Action>
+              </map:Case>
+              <map:Default>
+                <map:MarkAsNotMapped />
+              </map:Default>
+            </map:Conditional>
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+        <map:CodeMap Kind="Assign" MemberName="EndTime">
+          <map:CodeMap.Action>
+            <map:MarkAsNotMapped />
+          </map:CodeMap.Action>
+        </map:CodeMap>
+
+
+
       </map:CodeMapPackage.Maps>
     </map:CodeMapPackage>
   </MapUnit.Elements>

@@ -1,14 +1,14 @@
 <MapUnit xmlns="clr-namespace:Mobilize.Mappers.Extensibility.Core;assembly=Mobilize.ExtensibleMappers"
          xmlns:map="clr-namespace:Mobilize.Mappers.Extensibility.Code;assembly=Mobilize.ExtensibleMappers">
   <MapUnit.Elements>
-    <map:CodeMapPackage Type="Microsoft.Phone.Shell.StandardTileData" Name="Microsoft.Phone.Shell.StandardTileData">
+    <map:CodeMapPackage Type="Microsoft.Phone.Shell.IconicTileData">
       <map:CodeMapPackage.Maps>
 
         <map:CodeMap Kind="Type">
           <map:CodeMap.Action>
             <map:ActionSequence>
-              <map:AddHelper Path="..\Helpers\StandardTileData.cs" />
-              <map:ReplaceClassUsage NewNamespace="WindowsPhoneUWP.UpgradeHelpers" NewClassName="StandardTileData" />              
+              <map:AddHelper Path="..\Helpers\IconicTileData.cs" />
+              <map:ReplaceClassUsage NewNamespace="WindowsPhoneUWP.UpgradeHelpers" NewClassName="IconicTileData" />              
             </map:ActionSequence>              
           </map:CodeMap.Action>
         </map:CodeMap>
@@ -53,7 +53,7 @@
           </map:CodeMap.Action>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="BackBackgroundImage">
+        <map:CodeMap Kind="MemberAccess" MemberName="IconImage">
           <map:CodeMap.Action>
             <map:Keep />
           </map:CodeMap.Action>
@@ -65,18 +65,23 @@
           </map:CodeMap.Action>
         </map:CodeMap>        
         
-        <map:CodeMap Kind="MemberAccess" MemberName="BackContent">
+        <map:CodeMap Kind="MemberAccess" MemberName="WideContent1">
           <map:CodeMap.Action>
             <map:Keep />
           </map:CodeMap.Action>
         </map:CodeMap>
-        <map:CodeMap Kind="MemberAccess" MemberName="BackgroundImage">
+        <map:CodeMap Kind="MemberAccess" MemberName="WideContent2">
           <map:CodeMap.Action>
             <map:Keep />
           </map:CodeMap.Action>
-        </map:CodeMap>             
+        </map:CodeMap>
+        <map:CodeMap Kind="MemberAccess" MemberName="WideContent3">
+          <map:CodeMap.Action>
+            <map:Keep />
+          </map:CodeMap.Action>
+        </map:CodeMap>        
                 
-      </map:CodeMapPackage.Maps>     
+      </map:CodeMapPackage.Maps>      
     </map:CodeMapPackage>
   </MapUnit.Elements>
 </MapUnit>

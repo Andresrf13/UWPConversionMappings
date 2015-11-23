@@ -37,7 +37,7 @@
               </map:Case.Condition>
               <map:Case.Action>
                 <map:ReplaceWithTemplate>
-                  <![CDATA[ $appts.FindAppointmentsAsync($start, $end - $start)  ]]>
+                  <![CDATA[$appts.FindAppointmentsAsync($start, $end - $start)  ]]>
                 </map:ReplaceWithTemplate>
               </map:Case.Action>
             </map:Case>
@@ -72,7 +72,7 @@
       <map:CodeMapPackage.Metadata>
         <map:PackageMetadata Key="COMPLETED_PATTERN_EVENTS" Value="SearchCompleted"/>
         <map:PackageMetadata Key="COMPLETED_PATTERN_METHODS" Value="SearchAsync"/>
-        <map:PackageMetadata Key="ASYNC_MEMBERS" Value="Appointments"/>
+        <map:PackageMetadata Key="ASYNC_MEMBERS" Value="Appointments"/>        
       </map:CodeMapPackage.Metadata>
     </map:CodeMapPackage>
   </MapUnit.Elements>

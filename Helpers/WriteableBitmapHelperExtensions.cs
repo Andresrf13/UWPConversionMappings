@@ -22,8 +22,7 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 	public static class WriteableBitmapHelper
 	{
 		public static async Task RenderHelper(WriteableBitmap targetBitmap, FrameworkElement control, Transform transform)
-		{
-			int x = 0, y = 0;
+		{			
 			if (transform is TranslateTransform)
 			{
 				await RenderHelper(

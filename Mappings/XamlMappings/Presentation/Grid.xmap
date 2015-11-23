@@ -7,8 +7,8 @@
                 <xmap:XamlMap Kind="Property" PropertyName="Background" >
                     <xmap:XamlMap.Action>
                         <xmap:ActionSequence>
-                            <xmap:ReplaceAttributeValue>
-                                <xmap:RegexReplacementPair ReplacementString="{}{ThemeResource ApplicationPageBackgroundThemeBrush}" ValueRegex="Transparent" />
+                            <xmap:ReplaceAttributeValue>                                                           
+                              <xmap:RegexReplacementPair ReplacementString="{}{ThemeResource ApplicationPageBackgroundThemeBrush}" ValueRegex="Transparent" />                              
                             </xmap:ReplaceAttributeValue>
                         </xmap:ActionSequence>
                     </xmap:XamlMap.Action>
@@ -24,7 +24,12 @@
                     <xmap:XamlMap.Action>
                         <xmap:SetPropertyValueToSimpleValue  AttributeToChangeName="Background" NewPropertyValue="{}{ThemeResource ApplicationPageBackgroundThemeBrush}">
                             <xmap:SetPropertyValueToSimpleValue.Condition>
+                              <xmap:AllConditionsApply>
                                 <xmap:ElementParent ParentElementName="Page" ParentElementNamespace="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                                <xmap:ConditionDoesNotApply>                                  
+                                  <xmap:ElementContainsAttribute PropertyLocalName="Background" />
+                                </xmap:ConditionDoesNotApply>
+                              </xmap:AllConditionsApply>                                
                             </xmap:SetPropertyValueToSimpleValue.Condition>
                         </xmap:SetPropertyValueToSimpleValue>
                     </xmap:XamlMap.Action>

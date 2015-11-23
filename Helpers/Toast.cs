@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsPhoneUWP.UpgradeHelpers
 {
-    class ToastPrompt : Windows.UI.Notifications.ToastNotificationManager
+//: Windows.UI.Notifications.ToastNotificationManager
+    class ToastPrompt 
     {
         public string Title { get; set; }
         public string Message { get; set; }
