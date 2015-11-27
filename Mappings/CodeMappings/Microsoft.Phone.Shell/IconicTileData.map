@@ -8,6 +8,7 @@
           <map:CodeMap.Action>
             <map:ActionSequence>
               <map:AddHelper Path="..\Helpers\IconicTileData.cs" />
+              <map:AddHelper Path="..\Helpers\TileHelper.cs" />
               <map:ReplaceClassUsage NewNamespace="WindowsPhoneUWP.UpgradeHelpers" NewClassName="IconicTileData" />              
             </map:ActionSequence>              
           </map:CodeMap.Action>

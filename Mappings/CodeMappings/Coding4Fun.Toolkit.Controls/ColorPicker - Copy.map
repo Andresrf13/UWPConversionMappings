@@ -1,7 +1,7 @@
 <MapUnit xmlns="clr-namespace:Mobilize.Mappers.Extensibility.Core;assembly=Mobilize.ExtensibleMappers"
          xmlns:map="clr-namespace:Mobilize.Mappers.Extensibility.Code;assembly=Mobilize.ExtensibleMappers">
   <MapUnit.Elements>
-    <map:CodeMapPackage Type="Coding4Fun.Phone.Controls.ChatBubble">
+    <map:CodeMapPackage Type="Coding4Fun.Toolkit.Controls.ColorPicker">
       <map:CodeMapPackage.Maps>
 
         <map:CodeMap Kind="Type">
@@ -10,19 +10,19 @@
           </map:CodeMap.Action>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="Content">
+        <map:CodeMap Kind="MemberAccess" MemberName="Color">
           <map:ActionSequence>
             <map:MarkAsNotMapped />
           </map:ActionSequence>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="IsEnabled">
+        <map:CodeMap Kind="MemberAccess" MemberName="SolidColorBrush">
           <map:ActionSequence>
             <map:MarkAsNotMapped />
           </map:ActionSequence>
         </map:CodeMap>
 
-        <map:CodeMap Kind="MemberAccess" MemberName="ChatBubbleDirection">
+        <map:CodeMap Kind="MemberAccess" MemberName="ColorChanged">
           <map:ActionSequence>
             <map:MarkAsNotMapped />
           </map:ActionSequence>

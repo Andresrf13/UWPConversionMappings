@@ -62,31 +62,39 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 
         public static Uri GetAsNavigationUri(this SecondaryTile tile)
         {
-	    if(tile.TileId == "____dummyApplicationTile")
+            if (tile.TileId == "____dummyApplicationTile")
             {
                 return new Uri(tile.TileId, UriKind.Relative);
             }
             string navigation = tile.TileId.Replace('_', '/');
             navigation = navigation.Replace("+", ":");
             navigation = navigation.Replace("%", "?");
-            return new Uri(navigation, UriKind.Relative);
+            navigation = navigation.Replace("#", "\\");
+            try
+            {
+                return new Uri(navigation, UriKind.Relative);
+            }
+            catch (Exception)
+            {
+                return new Uri(navigation, UriKind.Absolute);
+            }
         }
 
 
         public static async System.Threading.Tasks.Task<IEnumerable<Windows.UI.StartScreen.SecondaryTile>> GetActiveTiles()
-        {          
+        {
 
             var tiles = (System.Collections.Generic.IEnumerable<Windows.UI.StartScreen.SecondaryTile>)await Windows.UI.StartScreen.SecondaryTile.FindAllForPackageAsync();
             return new[] { new Windows.UI.StartScreen.SecondaryTile("____dummyApplicationTile") }.Concat(tiles);
         }
 
         public static async Task UpdateHelper(SecondaryTile tile, TileHelper notification)
-        {           
+        {
             if (tile.TileId == "____dummyApplicationTile")
             {
                 Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForApplication().Update(notification.GetNotificacion());
                 BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(notification.GetBadge());
-                               
+
             }
             else
             {
@@ -136,7 +144,7 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 
         public static async Task CreateHelper(Uri navigationUri, TileHelper xmlstring, bool wideSupport)
         {
-            string tileId = SetNavigationUri(navigationUri); 
+            string tileId = SetNavigationUri(navigationUri);
             string shortName = xmlstring.Title;
             string arguments = "arg=defaultArg";
 
@@ -159,7 +167,7 @@ namespace WindowsPhoneUWP.UpgradeHelpers
             }
             Uri square150x150Logo = new Uri("ms-appx:///Assets/Square150x150Logo.scale-200.png");
             Uri logoReference = new Uri("ms-appx:///Assets/ApplicationIcon.png");
-            Uri wideLogoReference =square150x150Logo;
+            Uri wideLogoReference = square150x150Logo;
             SecondaryTile Tile = new SecondaryTile(tileId);
             Tile.VisualElements.BackgroundColor = xmlstring.BackgroundColor != null ? xmlstring.BackgroundColor : Tile.VisualElements.BackgroundColor;
             Tile.Arguments = arguments;
@@ -169,9 +177,9 @@ namespace WindowsPhoneUWP.UpgradeHelpers
 
             await Tile.RequestCreateAsync();
             TileUpdateManager.CreateTileUpdaterForSecondaryTile(Tile.TileId).EnableNotificationQueue(true);
-            Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForSecondaryTile(Tile.TileId).Update(xmlstring.GetNotificacion());            
+            Windows.UI.Notifications.TileUpdateManager.CreateTileUpdaterForSecondaryTile(Tile.TileId).Update(xmlstring.GetNotificacion());
             BadgeUpdateManager.CreateBadgeUpdaterForSecondaryTile(Tile.TileId).Update(xmlstring.GetBadge());
-            
+
         }
 
         private static string SetNavigationUri(Uri navigationUri)
@@ -179,8 +187,9 @@ namespace WindowsPhoneUWP.UpgradeHelpers
             string navigation = navigationUri.OriginalString.Replace('/', '_');
             navigation = navigation.Replace(":", "+");
             navigation = navigation.Replace("?", "%");
+            navigation = navigation.Replace("\\", "#");
             return navigation;
         }
-        
+
     }
 }
