@@ -11,9 +11,11 @@
           </map:CodeMap.Action>
         </map:CodeMap>
 
-        <!--<map:CodeMap Kind="Call" MemberName="OnApplyTemplate">
+        <map:CodeMap Kind="Call" MemberName="OnApplyTemplate">
+          <map:CodeMap.Action>
           <map:Keep/>
-        </map:CodeMap>-->
+          </map:CodeMap.Action>
+        </map:CodeMap>
 
       </map:CodeMapPackage.Maps>
     </map:CodeMapPackage>
